@@ -1,0 +1,29 @@
+#Va até o diretório e inicie/crie o git na pasta
+git init
+
+#Configurações globais
+git config --global user.name "David Kenny"
+git config --global user.email contato@webproinfo.com
+
+#Definir o editor padrão
+git config --global core.editor emacs
+
+#Verificando minhas configurações
+git config --list
+
+
+#Adicionando um repositório
+git remote add origin https://github.com/dkpimentel/carteirinhacpx.git
+
+git remote -v para saber o repositório
+
+#Remover o repositório
+git remote rm
+
+#Para enviar os arquivos para o git
+git push -u origin master
+
+#Para pegar os arquivos do git
+git pull origin master
+
+
