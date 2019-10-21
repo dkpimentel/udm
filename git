@@ -18,7 +18,7 @@ git remote add origin https://github.com/dkpimentel/carteirinhacpx.git
 git remote -v para saber o repositório
 
 #Remover o repositório
-git remote rm
+git remote rm origin
 
 #Para enviar os arquivos para o git
 git push -u origin master
