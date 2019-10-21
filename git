@@ -15,7 +15,8 @@ git config --list
 #Adicionando um repositório
 git remote add origin https://github.com/dkpimentel/carteirinhacpx.git
 
-git remote -v para saber o repositório
+#Para saber qual url do repositório está configurado
+git remote -v
 
 #Remover o repositório
 git remote rm origin
