@@ -34,10 +34,26 @@ $usuario->login("david","45");
 echo $usuario;
 */
 
+/*
+--------Inserir dados com Procedure--------
 $aluno = new Usuario("aluno1","@lun02");
 
 $aluno->insert();
 
 echo $aluno;
+*/
+
+/*
+--------
+*/
+
+$usuario = new Usuario();
+
+$usuario->loadById(5);
+
+$usuario->update("Professor", "3321");
+
+echo $usuario;
+
 
  ?>
