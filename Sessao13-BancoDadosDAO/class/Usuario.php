@@ -38,12 +38,7 @@ class Usuario {
 
 		if (isset($result[0])) {
 
-			$row = $result[0];
-
-			$this->setIdusuario($row['idusuario']);
-			$this->setDeslogin($row['deslogin']);
-			$this->setDessenha($row['dessenha']);
-			$this->setDtcadastro(new DateTime($row['dtcadastro']));
+			$this->setData($result[0]);
 
 		}
 
@@ -81,12 +76,7 @@ class Usuario {
 
 		if (isset($result[0])) {
 
-			$row = $result[0];
-
-			$this->setIdusuario($row['idusuario']);
-			$this->setDeslogin($row['deslogin']);
-			$this->setDessenha($row['dessenha']);
-			$this->setDtcadastro(new DateTime($row['dtcadastro']));
+			$this->setData($result[0]);
 
 		} else {
 
@@ -97,6 +87,38 @@ class Usuario {
 
 	}
 	//Término: Método validação de Login
+
+	//Já foi utilizado várias vezes o results então foi criado um método
+	public function setData($data){
+
+		$this->setIdusuario($data['idusuario']);
+		$this->setDeslogin($data['deslogin']);
+		$this->setDessenha($data['dessenha']);
+		$this->setDtcadastro(new DateTime($data['dtcadastro']));
+
+	}
+
+
+
+	//Início: Método para inserir dados no banco
+	public function insert(){
+
+		$sql = new Sql();
+
+		//Será criado uma procedure
+		$results = $sql->select("CALL sp_usuarios_insert(:LOGIN, :SENHA)", array(
+			':LOGIN'=>$this->getDeslogin(),
+			':SENHA'=>$this->getDessenha()
+		));
+
+		if (count($results) > 0) {
+			
+			$this->setData($results[0]);
+
+		}
+
+	}
+	//Término: Método para inserir dados no banco
 
 
 
@@ -113,6 +135,15 @@ class Usuario {
 	}
 	//Término: Método para selecionar todos usuários da tabela
 
+
+	//Início: Método construtor
+	public function __construct($login="", $password=""){
+
+		$this->setDeslogin($login);
+		$this->setDessenha($password);
+
+	}
+	//Término: Método construtor
 
 
 	//Início: Método toString

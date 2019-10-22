@@ -27,10 +27,17 @@ echo json_encode($search);
 
 /*
 --------Carregar usuário utilizando login e senha--------
-*/
+
 
 $usuario = new Usuario();
 $usuario->login("david","45");
 echo $usuario;
+*/
+
+$aluno = new Usuario("aluno1","@lun02");
+
+$aluno->insert();
+
+echo $aluno;
 
  ?>
