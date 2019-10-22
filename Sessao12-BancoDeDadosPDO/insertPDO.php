@@ -18,6 +18,6 @@ $stmt->execute();
 
 
 echo "Inserido ok";
-
+/**/
 
  ?>
