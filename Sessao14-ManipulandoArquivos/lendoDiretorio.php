@@ -3,7 +3,7 @@
 /*
 Criando um diretório caso ele não existe
 */
-$name = "image";
+$name = "images";
 //Verifica se não é um diretório
 if (!is_dir($name)) {
 	//Criar diretórios
@@ -14,7 +14,7 @@ if (!is_dir($name)) {
 }else {
 
 	//Remove diretórios
-	rmdir($name);
+	//rmdir($name);
 	echo "Diretório já existente, foi deletado";
 
 }
