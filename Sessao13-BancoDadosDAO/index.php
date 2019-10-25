@@ -45,8 +45,8 @@ echo $aluno;
 
 /*
 --------
-*/
 
+*/
 $usuario = new Usuario();
 
 $usuario->loadById(5);
@@ -54,6 +54,5 @@ $usuario->loadById(5);
 $usuario->update("Professor", "3321");
 
 echo $usuario;
-
 
  ?>
