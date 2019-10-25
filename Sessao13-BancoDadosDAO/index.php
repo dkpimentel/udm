@@ -44,7 +44,12 @@ echo $aluno;
 */
 
 /*
+<<<<<<< HEAD
 --------
+=======
+--------Alterar com usuário--------
+
+>>>>>>> b18f8fd6a52df23e1fb6bd7ab39ecccea3feed3d
 
 */
 $usuario = new Usuario();
@@ -54,5 +59,22 @@ $usuario->loadById(5);
 $usuario->update("Professor", "3321");
 
 echo $usuario;
+*/
 
+
+/*
+--------Deletar usuário por id--------
+*/
+
+$usuario = new Usuario();
+
+<<<<<<< HEAD
+=======
+$usuario->loadById(7);
+
+$usuario->delete();
+
+echo $usuario;
+
+>>>>>>> b18f8fd6a52df23e1fb6bd7ab39ecccea3feed3d
  ?>
