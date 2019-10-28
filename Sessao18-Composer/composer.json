@@ -1,0 +1,15 @@
+{
+    "name": "webproinfo/composer",
+    "description": "Aula teste php",
+    "type": "project",
+    "authors": [
+        {
+            "name": "David Kenny",
+            "email": "contato@webproinfo.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "monolog/monolog":"1.0.*"
+    }
+}
