@@ -28,3 +28,8 @@ git push -u origin master
 git pull origin master
 
 
+#Acertando erro “fatal: refusing to merge unrelated histories” - Permitindo histórias não relacionadas
+git pull origin master --allow-unrelated-histories
+
+
+
