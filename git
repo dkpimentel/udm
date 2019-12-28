@@ -1,32 +1,51 @@
-#Va até o diretório e inicie/crie o git na pasta
+#Inicitar o git
 git init
 
 #Configurações globais
 git config --global user.name "David Kenny"
 git config --global user.email contato@webproinfo.com
 
-#Definir o editor padrão
-git config --global core.editor emacs
-
 #Verificando minhas configurações
 git config --list
 
-
 #Adicionando um repositório
-git remote add origin https://github.com/dkpimentel/carteirinhacpx.git
+git remote add origin <<nome do repositório>>
 
-#Para saber qual url do repositório está configurado
+#Verificando as configurações do repositório
 git remote -v
 
-#Remover o repositório
+#Removendo um repositório
 git remote rm origin
 
-#Para enviar os arquivos para o git
-git push -u origin master
+#Carregar arquivos do git
+git pull origin <<branch>>
 
-#Para pegar os arquivos do git
-git pull origin master
+#Para enviar arquivos para o git
+git push origin <<branch>>
 
+#Para criar um novo branch
+git checkout <<tag>> -b <<novo branch>>
+
+#Para excluir um branch
+
+#Para renomear um branch
+git branch -m <<Atual>> <<Novo>>
+
+#Para criar uma nova tag
+git tag -a <<tag>> <<id branch>> 
+
+#Para excluir uma tag
+git tag -d <<tag>>
+
+#Para verificar as mudanças
+git show <<id branch>> ou <<tag>>
+
+#Para alternar entre tags e branch
+git checkout <<tag>> ou <<branch>>
+
+#Para juntar os branchs
+Preciso está no branch estável
+git merge <<branch>>
 
 #Acertando erro “fatal: refusing to merge unrelated histories” - Permitindo histórias não relacionadas
 git pull origin master --allow-unrelated-histories
