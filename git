@@ -21,7 +21,7 @@ git remote rm origin
 git pull origin <<branch>>
 
 #Para enviar arquivos para o git
-git push origin <<branch>>
+git push --tags origin <<branch>>
 
 #Para criar um novo branch
 git checkout <<tag>> -b <<novo branch>>
