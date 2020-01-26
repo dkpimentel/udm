@@ -1,0 +1,33 @@
+apt-get update -y && apt-get upgrade -y && apt-get dist-upgrade -y
+apt-get install sudo
+wget -qO ee rt.cx/ee && sudo bash ee
+apt-get install zip unzip
+
+
+ee site create dominio.com --mysql
+ee site update dominio.com --php7
+apt-get install php7.0-intl
+ee site update dominio.com --le
+
+Acesso sftp
+
+sftp -o port=22 root@ip
+
+Voltando o Mautic:
+apt-get intall zip unzip
+ee site info dominio.com
+mysql -p -u nome-de-usuario banco-de-dados < banco.sql
+chown -R www-data:www-data /var/www/dominio.com/htdocs
+chmod -R g+rw /var/www/dominio.com/htdocs
+
+
+sudo nano /etc/ssh/sshd_config. 
+Você pode usar qualquer porta não utilizada até 65535.Port 2222
+
+Reiniciando o serviço de ssh
+/etc/init.d/ssh restart
+
+
+porta ssh e sftp alterada para 2222
+
+wp --allow-root search-replace --url=site.com http://site.com https://site.com --path=/var/www/site.com/htdocs
