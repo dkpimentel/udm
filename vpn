@@ -30,6 +30,7 @@ Reiniciando o serviço de ssh
 
 porta ssh e sftp alterada para 2222
 
+Alterando os links do servidor
 wp --allow-root search-replace --url=site.com http://site.com https://site.com --path=/var/www/site.com/htdocs
 
 
