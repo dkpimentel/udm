@@ -31,3 +31,30 @@ Reiniciando o serviço de ssh
 porta ssh e sftp alterada para 2222
 
 wp --allow-root search-replace --url=site.com http://site.com https://site.com --path=/var/www/site.com/htdocs
+
+
+#Liberando acesso remoto para SSH
+nano /etc/ssh/sshd_config
+Altere a linha onde está o PermitRootLogin para:
+PermitRootLogin yes
+service sshd restart
+
+#Alterando a senha root do mysql/mariadb
+acesse o mysql/mariadb
+mysql -u root
+flush privileges;
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'nova-senha';
+
+#Liberando acesso remoto para mysql/mariadb
+Comentando o bind-addres
+nano /etc/mysql/my.cnf
+
+Acesse o mysql/mariadb
+mysql -u root -p
+use mysql;
+update user set plugin='' where User='root';
+grant all privileges on *.* to 'root'@'%' identified by 'sua senha';
+flush privileges;
+exit
+
+service mysql restart
