@@ -59,3 +59,37 @@ flush privileges;
 exit
 
 service mysql restart
+
+*******************
+Criando backup de banco de dados
+Fazendo o dump
+mysqldump -h localhost -u USER -pSENHA meuBanco > backup_meuBanco.sql
+
+Restaurando
+mysql -h localhost -u USER -pSENHA meuBanco < meuBanco-20020924.sql
+
+*******************
+Script SH.
+
+#!/bin/sh
+# mysqlBackup.sh
+
+DATA=`/bin/date +%Y%m%d`
+
+# NOME armazena o nome do arquivo de backup, neste casoi
+# o diretório é /home/fabio/backup, configure aqui o seu
+# diretório de backup
+NOME="/home/fabio/backup/meuBanco-$DATA.sql"
+
+# variáveis do MySQL
+HOST="localhost"
+USER="armenio"
+PASSWORD="jujuba"
+DATABASE="meuBanco"
+
+mysqldump -h $HOST -u $USER -p$PASSWORD > $NOME
+
+Crontab -e
+0 2 * * * /bin/sh /home/dk/mysqlBackup.sh
+
+
