@@ -1,6 +1,7 @@
 apt-get update -y && apt-get upgrade -y && apt-get dist-upgrade -y
 apt-get install sudo
 wget -qO ee rt.cx/ee && sudo bash ee
+wget -qO wo wops.cc && sudo bash wo
 apt-get install zip unzip
 
 
