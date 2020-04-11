@@ -10,6 +10,9 @@ ee site update dominio.com --php7
 apt-get install php7.0-intl
 ee site update dominio.com --le
 
+Excluir tudo dentro de uma pasta
+rm -rf /home/user/Downloads/*
+
 Acesso sftp
 
 sftp -o port=22 root@ip
