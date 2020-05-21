@@ -75,25 +75,45 @@ mysql -h localhost -u USER -pSENHA meuBanco < meuBanco-20020924.sql
 *******************
 Script SH.
 
-#!/bin/sh
-# mysqlBackup.sh
+# Definindo parâmetros do MySql
+echo " -- Definindo parametros do mysql ..."
+DB_NAME='editora_emescam_br_SgKzcnJ7'
+DB_USER='editoraemescG9oE'
+DB_PASS='envwV45Qgf6ptHaIqcsMTXSd'
+DB_PARAM='localhost'
 
-DATA=`/bin/date +%Y%m%d`
+# Definindo parâmetros do SISTEMA
+echo " -- Definindo parametros do sistema ..."
+DATE=`date +%Y-%m-%d`
+MYSQLDUMP=mysqldump
+BACKUP_DIR=/var/www/editora.emescam.br/htdocs/wp-content/bp
+BACKUP_NAME=mysql-$DATE.sql
+BACKUP_TAR=mysql-$DATE.tar
 
-# NOME armazena o nome do arquivo de backup, neste casoi
-# o diretório é /home/fabio/backup, configure aqui o seu
-# diretório de backup
-NOME="/home/fabio/backup/meuBanco-$DATA.sql"
+# Gerando arquivo sql
+echo "  -- Gerando Backup da base de dados $DB_NAME em $BACKUP_DIR/$BACKUP_NAME ..."
+$MYSQLDUMP -h $DB_PARAM -u $DB_USER -p$DB_PASS $DB_NAME > $BACKUP_DIR/$BACKUP_NAME
 
-# variáveis do MySQL
-HOST="localhost"
-USER="armenio"
-PASSWORD="jujuba"
-DATABASE="meuBanco"
 
-mysqldump -h $HOST -u $USER -p$PASSWORD > $NOME
+# Compactando arquivo em tar.bzip2 e removendo o .sql
+echo "  -- Compactando arquivo em tar bzip2 ..."
+tar -cjf $BACKUP_DIR/$BACKUP_TAR -C $BACKUP_DIR $BACKUP_NAME --remove-files
+
+# Excluindo backups antigos
+echo " -- Excluindo backups com mais de 10 dias ..."
+find $BACKUP_DIR/* -mtime +5 -delete
+
+# Acessando o diretorio.
+cd /var/www/editora.emescam.br/htdocs/
+
+# Adicionando no git
+git add .
+git commit -m 'Commit Automatico'
 
 Crontab -e
-0 2 * * * /bin/sh /home/dk/mysqlBackup.sh
+0 0 */3 * * /bin/sh /var/www/site.com/Script_Backup_BD.sh >/dev/null 2>&1
+#site para gerar cron => https://crontab-generator.org
+#site com modelos de cron => https://www.hostinger.com.br/tutoriais/como-configurar-cron-jobs-no-linux/
+
 
 
