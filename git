@@ -4,9 +4,18 @@ git init
 #Configurações globais
 git config --global user.name "David Kenny"
 git config --global user.email contato@webproinfo.com
+git config --global credential.https://github.com.username dkpimentel
 
 #Verificando minhas configurações
 git config --list
+git config --global --edit
+
+#Ativando o cache para guardar user e senha
+git config credential.helper store
+$ git push https://github.com/repo.git
+
+Username for 'https://github.com': <USERNAME>
+Password for 'https://USERNAME@github.com': <PASSWORD>
 
 #Adicionando um repositório
 git remote add origin <<nome do repositório>>
