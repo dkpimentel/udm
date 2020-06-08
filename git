@@ -36,6 +36,8 @@ git push --tags origin <<branch>>
 git checkout <<tag>> -b <<novo branch>>
 
 #Para excluir um branch
+git branch -d <<branch>>
+git branch -D <<branch>> para forçar
 
 #Para renomear um branch
 git branch -m <<Atual>> <<Novo>>
