@@ -12,6 +12,10 @@ ee site update dominio.com --le
 
 Excluir tudo dentro de uma pasta
 rm -rf /home/user/Downloads/*
+rm-R /pasta
+
+Copiar
+cp -r /var/pasta /home/pasta
 
 Acesso sftp
 
