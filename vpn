@@ -4,6 +4,13 @@ wget -qO ee rt.cx/ee && sudo bash ee
 wget -qO wo wops.cc && sudo bash wo
 apt-get install zip unzip
 
+Descompactação
+tar -xvf nomedoarquivo.tar
+unzip nomedoarquivo.zip
+unrar x nomedoarquivo.rar
+tar -vzxf nomedoarquivo.tar.gz
+bunzip nomedoarquivo.bz2
+tar -jxvf nomedoarquivo
 
 ee site create dominio.com --mysql
 ee site update dominio.com --php7
