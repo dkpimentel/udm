@@ -86,20 +86,39 @@ mysql -h localhost -u USER -pSENHA meuBanco < meuBanco-20020924.sql
 *******************
 Script SH.
 
+#Senha do zip
+CREATOR='SENHA'
+
 # Definindo parâmetros do MySql
 echo " -- Definindo parametros do mysql ..."
-DB_NAME='editora_emescam_br_SgKzcnJ7'
-DB_USER='editoraemescG9oE'
-DB_PASS='envwV45Qgf6ptHaIqcsMTXSd'
+DB_NAME='dbname'
+DB_USER='dbuser'
+DB_PASS='dbpass'
 DB_PARAM='localhost'
+
+# Variaveis do Git
+echo " -- Definindo parametros do github ..."
+GIT_REMOTE='gitRemote'
+GIT_BRANCH_P='Prod'
 
 # Definindo parâmetros do SISTEMA
 echo " -- Definindo parametros do sistema ..."
 DATE=`date +%Y-%m-%d`
 MYSQLDUMP=mysqldump
-BACKUP_DIR=/var/www/editora.emescam.br/htdocs/wp-content/bp
+BACKUP_DOM=dominio
+BACKUP_PAST=bp
+BACKUP_DIR=/var/www/$BACKUP_DOM/htdocs/wp-content/$BACKUP_PAST
 BACKUP_NAME=mysql-$DATE.sql
 BACKUP_TAR=mysql-$DATE.tar
+BACKUP_ZIP=mysql-$DATE.zip
+BACKUP_CT=$CREATOR
+
+#Criando a pasta de backup caso não exista e dando permissões
+echo " -- Criando pasta de backup e configurando permissões ..."
+mkdir $BACKUP_DIR
+chown -R www-data:www-data $BACKUP_DIR
+chmod -R g+rw $BACKUP_DIR
+
 
 # Gerando arquivo sql
 echo "  -- Gerando Backup da base de dados $DB_NAME em $BACKUP_DIR/$BACKUP_NAME ..."
@@ -109,20 +128,31 @@ $MYSQLDUMP -h $DB_PARAM -u $DB_USER -p$DB_PASS $DB_NAME > $BACKUP_DIR/$BACKUP_NA
 # Compactando arquivo em tar.bzip2 e removendo o .sql
 echo "  -- Compactando arquivo em tar bzip2 ..."
 tar -cjf $BACKUP_DIR/$BACKUP_TAR -C $BACKUP_DIR $BACKUP_NAME --remove-files
+zip -r9 -P$BACKUP_CT $BACKUP_DIR/$BACKUP_ZIP $BACKUP_DIR/$BACKUP_TAR
+rm -R $BACKUP_DIR/$BACKUP_TAR
 
 # Excluindo backups antigos
-echo " -- Excluindo backups com mais de 10 dias ..."
+echo " -- Excluindo backups com mais de 5 dias ..."
 find $BACKUP_DIR/* -mtime +5 -delete
 
 # Acessando o diretorio.
-cd /var/www/editora.emescam.br/htdocs/
+echo " -- Acessando diretórios ..."
+cd /var/www/$BACKUP_DOM/htdocs/
 
 # Adicionando no git
+echo " -- Inicializando o git...configurações...branch...commit...push ..."
+git init
+git config --global user.name "David Kenny"
+git config --global user.email contato@webproinfo.com
+git config --global credential.https://github.com.username dkpimentel
+git remote add origin $GIT_REMOTE
 git add .
 git commit -m 'Commit Automatico'
+git branch -m master $GIT_BRANCH_P
+git push --tags origin $GIT_BRANCH_P
 
 Crontab -e
-0 0 */3 * * /bin/sh /var/www/site.com/Script_Backup_BD.sh >/dev/null 2>&1
+0 0 */3 * * /bin/sh /var/www/site.com/backup.sh >/dev/null 2>&1
 #site para gerar cron => https://crontab-generator.org
 #site com modelos de cron => https://www.hostinger.com.br/tutoriais/como-configurar-cron-jobs-no-linux/
 
