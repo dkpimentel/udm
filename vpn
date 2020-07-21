@@ -50,6 +50,7 @@ wp --allow-root search-replace --url=site.com http://site.com https://site.com -
 
 
 #Liberando acesso remoto para SSH
+apt-get install openssh-server openssh-client
 nano /etc/ssh/sshd_config
 Altere a linha onde está o PermitRootLogin para:
 PermitRootLogin yes
