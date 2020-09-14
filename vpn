@@ -33,7 +33,7 @@ grep -i -R "trecho a procurar" /var/www/*
 https://tecnoblog.net/70876/grep-tutorial-linux-codigo/
 
 Pesquisando arquivos
-sudo find / -iname sitemap
+sudo find / -iname sitemap*
 
 Acesso sftp
 
