@@ -12,6 +12,7 @@ tar -vzxf nomedoarquivo.tar.gz
 bunzip nomedoarquivo.bz2
 tar -jxvf nomedoarquivo
 
+Criando sites
 ee site create dominio.com --mysql
 ee site update dominio.com --php7
 apt-get install php7.0-intl
@@ -23,6 +24,13 @@ rm-R /pasta
 
 Copiar
 cp -r /var/pasta /home/pasta
+
+Renomear
+mv atual novo
+
+Pesquisar -R pasta e subpastas -i maiuscula/minuscula
+grep -i -R "trecho a procurar" /var/www/*
+https://tecnoblog.net/70876/grep-tutorial-linux-codigo/
 
 Acesso sftp
 
