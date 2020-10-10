@@ -1,0 +1,18 @@
+Verificar se o hd está ok, powershell ou cmd adm
+wmic diskdrive get caption,status
+
+
+Comando no cmd admin - na reinicialização será verificado o hd para corrigir erros
+chkdsk/f/r
+
+Verificar erro no sistema operacional
+sfc/scannow
+
+Propriedades
+Desabilitar o acesso remoto
+
+
+Serviços do windows
+Desabilitar o Windows Search
+
+
