@@ -1,65 +1,128 @@
-#Inicitar o git
+#
+# Comando Git
+#
+
+#
+#Inicializar o Git no repositório e comandos básicos
+#
+
+#Adicionar
 git init
 
-#Configurações globais
+#Adicionar ao container local
+git add .
+git add <MEU ARQUIVO>
+git add <MEU DIRETÓRIO>
+
+#Fazer o commit ao adiconar o -m "descrição" no final serve para descrever o commit
+git commit
+git commit <MEU ARQUIVO>
+git commit <MEU DIRETÓRIO>
+
+
+#
+#Configurações Globais
+#
+
+# Adicionando
 git config --global user.name "David Kenny"
-git config --global user.email contato@webproinfo.com
+git config --global user.email suporte@ddcreative.com.br
 git config --global credential.https://github.com.username dkpimentel
 
-#Verificando minhas configurações
+# Consultando
 git config --list
 git config --global --edit
 
-#Ativando o cache para guardar user e senha
+#
+#Adicionando cache de senha do git
+#
 git config credential.helper store
-$ git push https://github.com/repo.git
-
+git push https://github.com/repo.git
 Username for 'https://github.com': <USERNAME>
 Password for 'https://USERNAME@github.com': <PASSWORD>
 
-#Adicionando um repositório
-git remote add origin <<nome do repositório>>
+#
+#Respositório
+#
 
-#Verificando as configurações do repositório
+# Adicionando
+git remote add origin <NOME REPOSITÓRIO>
+
+# Pesquisando
 git remote -v
 
-#Removendo um repositório
+# Removendo rep
 git remote rm origin
 
-#Carregar arquivos do git
-git pull origin <<branch>>
+#
+# Comando Push e Pull para envio de arquivos
+#
 
-#Para enviar arquivos para o git
-git push --tags origin <<branch>>
+#Enviar arquivos/diretórios para o repositório remoto
+git push --tags origin <BRANCH>
+git push --tags --force origin <BRANCH>
 
-#Para criar um novo branch
-git checkout <<tag>> -b <<novo branch>>
+#Atualizar repositório local de acordo com o remoto
+git pull --tags origin <BRANCH>
+#Busca alterações no ropositório remoto mais não aplica no branch atual
+git fetch
 
-#Para excluir um branch
-git branch -d <<branch>>
-git branch -D <<branch>> para forçar
 
-#Para renomear um branch
-git branch -m <<Atual>> <<Novo>>
+#Remover Tag do repositório
+git push --delete origin <TAG>
 
-#Para criar uma nova tag
-git tag -a <<tag>> <<id branch>> 
+#
+# Branch
+#
 
-#Para excluir uma tag
-git tag -d <<tag>>
+#Criando 
+git branch <NOVO BRANCH>
 
-#Para verificar as mudanças
-git show <<id branch>> ou <<tag>>
+#Exclurir 
+git branch -d <BRANCH>
+git branch -D <BRANCH> para forçar
 
-#Para alternar entre tags e branch
-git checkout <<tag>> ou <<branch>>
+#Renomear 
+git branch -m <ATUAL> <NOVO>
 
-#Para juntar os branchs
-Preciso está no branch estável
-git merge <<branch>>
+#Alterar entre os Branch
+git checkout <BRANCH>
+
+#Merge dos Branchs - Precisa está no branch estável
+git merge <BRANCH>
+
+#Verificar as mudanças nos Branch
+git show <BRANCH ID>
+
+#
+# Tags
+#
+
+# Criando
+git tag -a <TAG> <BRANCH ID> 
+
+#Ecluir
+git tag -d <TAG>
+
+#Alterar entre as Tags
+git checkout <TAG>
+
+#Verificar as mudanças nas Tags
+git show <TAG>
+
+#
+#Log
+#
+
+#Log
+git log
+
+#Informações do lg resumido em uma linha
+git log --pretty=oneline
+
+#
+#Correção de erros no git
+#
 
 #Acertando erro “fatal: refusing to merge unrelated histories” - Permitindo histórias não relacionadas
 git pull origin master --allow-unrelated-histories
-
-
-
