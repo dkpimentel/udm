@@ -28,6 +28,10 @@ cp -r /var/pasta /home/pasta
 Renomear
 mv atual novo
 
+Criar links
+Vai até a pasta onde o atalho/link será criado
+ln -s /var/log/nginx/site.com.br.erro.log nome do arquivo (erro.log)
+
 Pesquisar palavras dentro de arquivos -R pasta e subpastas -i maiuscula/minuscula
 grep -i -R "trecho a procurar" /var/www/*
 https://tecnoblog.net/70876/grep-tutorial-linux-codigo/
