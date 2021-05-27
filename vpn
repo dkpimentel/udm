@@ -4,6 +4,12 @@ wget -qO ee rt.cx/ee && sudo bash ee
 wget -qO wo wops.cc && sudo bash wo
 apt-get install zip unzip
 
+Crontab
+sudo -u www-data crontab -e
+
+Acesso via sftp
+sftp -o port=22 root@ip
+
 Descompactação
 tar -xvf nomedoarquivo.tar
 unzip nomedoarquivo.zip
