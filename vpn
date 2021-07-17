@@ -4,6 +4,11 @@ wget -qO ee rt.cx/ee && sudo bash ee
 wget -qO wo wops.cc && sudo bash wo
 apt-get install zip unzip
 
+Problemas no certificado digital
+Basta adicionar o e-mail direto pelo acme.sh --debug
+/etc/letsencrypet/
+./acme.sh --register-account -m contato@ddcreative.com.br
+
 Crontab
 sudo -u www-data crontab -e
 
