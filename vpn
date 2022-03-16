@@ -33,6 +33,9 @@ sudo -u www-data crontab -e
 Acesso via sftp
 sftp -o port=22 root@ip
 
+Envio de arquivos via scp do computador para o seridor
+scp NOME-ARQUIVO USE@IP:~/DIRETORIO-LOCAL
+
 Descompactação
 tar -xvf nomedoarquivo.tar
 unzip nomedoarquivo.zip
