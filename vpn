@@ -50,6 +50,9 @@ ee site update dominio.com --php7
 apt-get install php7.0-intl
 ee site update dominio.com --le
 
+Alterando a senha do adm do wordpress pelo Wordops
+wo site update dominio.com.br --password
+
 Excluir tudo dentro de uma pasta
 rm -rf /home/user/Downloads/*
 rm-R /pasta
