@@ -12,6 +12,12 @@ Basta adicionar o e-mail direto pelo acme.sh --debug
 Converter database em utf8
 ALTER DATABASE databasename CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
+Download de arquivos da VPS para o pc
+scp root@143.198.65.155:/var/www/ddcreative.com.br/htdocs/wp-content/uploads/img.zip C:\Users\Pc\Downloads
+
+Zipando arquivos pastas ou subpastas
+zip -r nome-arquivos.zip pasta1 pasta2 pasta3
+
 Script para deletar todas tabelas do banco
 SET FOREIGN_KEY_CHECKS = 0;
 SET GROUP_CONCAT_MAX_LEN=32768;
